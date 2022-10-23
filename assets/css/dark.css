@@ -41,9 +41,14 @@ main#content ul#posts small {
     color: #a7a7a7;
 }
 
-main#content ul#posts li a:hover {
-    color: #21c7ff;
+main#content ul#posts li a {
+    text-decoration: none;
+    color: #d4d4d4;
 }
+
+/* main#content ul#posts li a:hover {
+    color: orange;
+} */
 
 main#content header#post-header div {
     color: #a7a7a7;
