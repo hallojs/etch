@@ -281,4 +281,6 @@ footer#footer {
     font-weight: 400;
     color: #b3b3b3;
     margin: 40px 0;
+    position : absolute;
+    bottom : 0;
 }
