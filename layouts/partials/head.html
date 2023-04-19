@@ -4,7 +4,13 @@
     {{ with .Site.Params.description -}}
     <meta name="description" content="{{ . }}">
     {{ end }}
-    {{ printf `<link rel="shortcut icon" href="%s">` ("favicon.ico" | absURL) | safeHTML }}
+    <!-- {{ printf `<link rel="shortcut icon" href="%s">` ("favicon.ico" | absURL) | safeHTML }} -->
+
+    {{ printf `<link rel="apple-touch-icon" sizes="180x180" href="%s">` ("apple-touch-icon.png" | absURL) | safeHTML }}
+    {{ printf `<link rel="icon" type="image/png" sizes="32x32" href="%s">` ("favicon-32x32.png" | absURL) | safeHTML }}
+    {{ printf `<link rel="icon" type="image/png" sizes="16x16" href="%s">` ("favicon-16x16.png" | absURL) | safeHTML }}
+    {{ printf `<link rel="manifest" href="%s">` ("site.webmanifest" | absURL) | safeHTML }}
+
     {{ with .OutputFormats.Get "rss" -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
