@@ -315,7 +315,7 @@ footer#footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     padding: 0;
 }
 
@@ -359,6 +359,28 @@ footer#footer {
     text-align: left;
     margin: 2rem 0;
     color: #313a3d;
+}
+
+/* Search bar styles */
+.search-bar-wrapper {
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+
+#recipe-search {
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  font-size: 2.6rem;
+  font-family: Dayrom, serif;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#recipe-search:focus {
+  border-color: #cbd5e0;
 }
 
 /* Mobile responsive styles for categories */

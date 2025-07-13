@@ -1,5 +1,23 @@
 {{ define "main" }}
 {{ .Content }}
 {{- partial "categories.html" . -}}
+<div class="search-bar-wrapper">
+  <input type="text" id="recipe-search" placeholder="Rezepte durchsuchen..." autocomplete="off" />
+</div>
 {{- partial "posts.html" . -}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var searchInput = document.getElementById('recipe-search');
+  var postsList = document.getElementById('posts');
+  if (!searchInput || !postsList) return;
+  searchInput.addEventListener('input', function() {
+    var filter = searchInput.value.toLowerCase();
+    var items = postsList.getElementsByTagName('li');
+    Array.from(items).forEach(function(li) {
+      var text = li.textContent || li.innerText;
+      li.style.display = text.toLowerCase().includes(filter) ? '' : 'none';
+    });
+  });
+});
+</script>
 {{ end }}
