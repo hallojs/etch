@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="category-title">{{ .Title }}</div>
+
+<ul id="posts">
+{{- range .Pages }}
+    {{ .Render "li" }}
+{{- end }}
+</ul>
+{{ end }}

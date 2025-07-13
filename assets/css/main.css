@@ -129,11 +129,11 @@ main#content abbr {
 
 /* index.html styles */
 main#content ul#posts {
-    list-style-type: none;
+    list-style-type: disc;
     font-size: 26px;
     font-size: 2.6rem;
     margin-top: 0;
-    padding: 0;
+    padding-left: 2rem;
 }
 
 main#content ul#posts li {
@@ -308,4 +308,71 @@ footer#footer {
     min-height: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
+}
+
+/* Categories grid styles */
+#categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 0;
+}
+
+.category-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #cbd5e0;
+}
+
+.category-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.category-card h4 {
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: #2d3748;
+    line-height: 1.3;
+}
+
+/* Category title styles */
+.category-title {
+    font-size: 2.6rem;
+    text-align: left;
+    margin: 2rem 0;
+    color: #313a3d;
+}
+
+/* Mobile responsive styles for categories */
+@media (max-width: 768px) {
+    #categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .category-card {
+        padding: 1.25rem;
+    }
+    
+    .category-card h4 {
+        font-size: 2.6rem;
+    }
 }

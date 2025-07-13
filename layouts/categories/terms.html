@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article>
+    <header>
+        <h1>Kategorien</h1>
+        <p>Alle Rezepte nach Kategorien sortiert</p>
+    </header>
+    
+    <ul id="categories">
+    {{- range .Data.Terms.Alphabetical }}
+        <li>
+            <a href="{{ .Page.Permalink }}">
+                {{ .Page.Title }}
+                <small>({{ .Count }} Rezepte)</small>
+            </a>
+        </li>
+    {{- end }}
+    </ul>
+</article>
+{{ end }}

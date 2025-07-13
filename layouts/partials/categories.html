@@ -1,0 +1,9 @@
+<div id="categories-grid">
+{{- range .Site.Taxonomies.categories }}
+    <div class="category-card">
+        <a href="{{ .Page.Permalink }}">
+            <h4>{{ .Page.Title }}</h4>
+        </a>
+    </div>
+{{- end }}
+</div>
