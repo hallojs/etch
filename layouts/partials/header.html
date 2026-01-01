@@ -1,20 +1,27 @@
 <header id="banner">
     <h2><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h2>
-    {{- if hugo.IsMultilingual }}
-    <div class="lang-switch">
-        {{- if .IsTranslated }}
-        {{- range .Translations }}
-        <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .Language.LanguageName }}{{ end }}</a>
+    <div class="header-controls">
+        {{- if hugo.IsMultilingual }}
+        <div class="lang-switch">
+            {{- if .IsTranslated }}
+            {{- range .Translations }}
+            <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .Language.LanguageName }}{{ end }}</a>
+            {{- end }}
+            {{- else }}
+            {{- range .Site.Languages }}
+            {{- if ne $.Site.Language.Lang .Lang }}
+            <a href="{{ .Lang | relLangURL }}" title="{{ .LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .LanguageName }}{{ end }}</a>
+            {{- end }}
+            {{- end }}
+            {{- end }}
+        </div>
         {{- end }}
-        {{- else }}
-        {{- range .Site.Languages }}
-        {{- if ne $.Site.Language.Lang .Lang }}
-        <a href="{{ .Lang | relLangURL }}" title="{{ .LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .LanguageName }}{{ end }}</a>
-        {{- end }}
-        {{- end }}
-        {{- end }}
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ if eq .Site.Language.Lang "de" }}Farbschema wechseln{{ else }}Toggle color theme{{ end }}">
+            <span class="theme-icon theme-icon-auto" title="{{ if eq .Site.Language.Lang "de" }}Automatisch{{ else }}Auto{{ end }}">🌗</span>
+            <span class="theme-icon theme-icon-light" title="{{ if eq .Site.Language.Lang "de" }}Hell{{ else }}Light{{ end }}">☀️</span>
+            <span class="theme-icon theme-icon-dark" title="{{ if eq .Site.Language.Lang "de" }}Dunkel{{ else }}Dark{{ end }}">🌙</span>
+        </button>
     </div>
-    {{- end }}
     <nav>
         <ul>
             {{ range .Site.Menus.main.ByWeight -}}

@@ -5,8 +5,9 @@
 
 <body style="background-repeat: no-repeat; background-position: right top;">
     <style>
+        /* Light mode background - auto detection */
         @media (min-width: 771px) and (prefers-color-scheme: light) {
-            body {
+            html:not([data-theme="dark"]) body {
                 background-image: linear-gradient(220deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 1) 55%),
                 url('{{ .Params.image }}');
                 background-size: 80%;
@@ -14,7 +15,7 @@
         }
 
         @media (min-width: 771px) and (prefers-color-scheme: light) and (orientation: portrait){
-            body {
+            html:not([data-theme="dark"]) body {
                 background-image: linear-gradient(220deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 1) 40%),
                 url('{{ .Params.image }}');
                 background-size: 100%;
@@ -22,13 +23,81 @@
         }
 
         @media (max-width: 770px) and (prefers-color-scheme: light) and (orientation: portrait) {
-            body {
+            html:not([data-theme="dark"]) body {
                 background-image: linear-gradient(225deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 35%),
                 url('{{ .Params.image }}');
                 background-size: 100%;
             }
         }
+
+        /* Forced light mode background */
+        @media (min-width: 771px) {
+            html[data-theme="light"] body {
+                background-image: linear-gradient(220deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85) 40%, rgba(255, 255, 255, 1) 55%),
+                url('{{ .Params.image }}') !important;
+                background-size: 80% !important;
+            }
+        }
+
+        @media (min-width: 771px) and (orientation: portrait){
+            html[data-theme="light"] body {
+                background-image: linear-gradient(220deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 1) 40%),
+                url('{{ .Params.image }}') !important;
+                background-size: 100% !important;
+            }
+        }
+
+        @media (max-width: 770px) and (orientation: portrait) {
+            html[data-theme="light"] body {
+                background-image: linear-gradient(225deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 35%),
+                url('{{ .Params.image }}') !important;
+                background-size: 100% !important;
+            }
+        }
+
+        /* Dark mode - no background image */
+        html[data-theme="dark"] body {
+            background-image: none !important;
+        }
     </style>
+
+    <script>
+        // Theme toggle functionality
+        (function() {
+            const THEME_KEY = 'theme-preference';
+            
+            function getStoredTheme() {
+                return localStorage.getItem(THEME_KEY) || 'auto';
+            }
+            
+            function setTheme(theme) {
+                localStorage.setItem(THEME_KEY, theme);
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            
+            // Apply theme immediately to prevent flash
+            setTheme(getStoredTheme());
+            
+            // Set up toggle button after DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleBtn = document.getElementById('theme-toggle');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', function() {
+                        const current = getStoredTheme();
+                        let next;
+                        if (current === 'auto') {
+                            next = 'light';
+                        } else if (current === 'light') {
+                            next = 'dark';
+                        } else {
+                            next = 'auto';
+                        }
+                        setTheme(next);
+                    });
+                }
+            });
+        })();
+    </script>
 
     <section>
 

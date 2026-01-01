@@ -1,58 +1,214 @@
+/* Dark mode styles - applied via prefers-color-scheme OR data-theme attribute */
 {{ if not (eq .Site.Params.dark "on") -}}
 @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
 {{ end -}}
+{{ if eq .Site.Params.dark "on" -}}
 html {
+{{ end -}}
+        scrollbar-color: #6c6c6c #2e2e2e;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) body {
+{{ else -}}
+    body {
+{{ end -}}
+        color: #ebebeb;
+        background: #121212;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) header#banner a {
+{{ else -}}
+    header#banner a {
+{{ end -}}
+        color: #e0e0e0;
+        text-decoration: none;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) header#banner .theme-toggle {
+{{ else -}}
+    header#banner .theme-toggle {
+{{ end -}}
+        background: rgba(50, 50, 50, 0.9);
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) header#banner .lang-switch a {
+{{ else -}}
+    header#banner .lang-switch a {
+{{ end -}}
+        background: rgba(50, 50, 50, 0.9);
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) header#banner nav ul li a {
+{{ else -}}
+    header#banner nav ul li a {
+{{ end -}}
+        color: #cccccc;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content a {
+{{ else -}}
+    main#content a {
+{{ end -}}
+        color: #00b1ed;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content p {
+{{ else -}}
+    main#content p {
+{{ end -}}
+        color: #f5f5f5;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content hr {
+{{ else -}}
+    main#content hr {
+{{ end -}}
+        background: #5c5c5c;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content #toc h4 {
+{{ else -}}
+    main#content #toc h4 {
+{{ end -}}
+        color: #d4d4d4;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content ul#posts small {
+{{ else -}}
+    main#content ul#posts small {
+{{ end -}}
+        color: #a7a7a7;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content ul#posts li a {
+{{ else -}}
+    main#content ul#posts li a {
+{{ end -}}
+        text-decoration: none;
+        color: #d4d4d4;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) main#content header#post-header div {
+{{ else -}}
+    main#content header#post-header div {
+{{ end -}}
+        color: #a7a7a7;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) .category-card {
+{{ else -}}
+    .category-card {
+{{ end -}}
+        background: #1e1e1e;
+        border-color: #333;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) .category-card h4 {
+{{ else -}}
+    .category-card h4 {
+{{ end -}}
+        color: #e0e0e0;
+    }
+
+{{ if not (eq .Site.Params.dark "on") -}}
+    html:not([data-theme="light"]) #recipe-search {
+{{ else -}}
+    #recipe-search {
+{{ end -}}
+        background: #1e1e1e;
+        border-color: #333;
+        color: #e0e0e0;
+    }
+{{- if not (eq .Site.Params.dark "on") }}
+}
+{{- end }}
+
+/* Forced dark mode via data-theme attribute */
+html[data-theme="dark"] {
     scrollbar-color: #6c6c6c #2e2e2e;
 }
 
-body {
+html[data-theme="dark"] body {
     color: #ebebeb;
     background: #121212;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-header#banner a {
+html[data-theme="dark"] header#banner a {
     color: #e0e0e0;
     text-decoration: none;
 }
 
-header#banner nav ul li a {
+html[data-theme="dark"] header#banner .theme-toggle {
+    background: rgba(50, 50, 50, 0.9);
+}
+
+html[data-theme="dark"] header#banner .lang-switch a {
+    background: rgba(50, 50, 50, 0.9);
+}
+
+html[data-theme="dark"] header#banner nav ul li a {
     color: #cccccc;
 }
 
-main#content a {
+html[data-theme="dark"] main#content a {
     color: #00b1ed;
 }
 
-main#content p {
+html[data-theme="dark"] main#content p {
     color: #f5f5f5;
 }
 
-main#content hr {
+html[data-theme="dark"] main#content hr {
     background: #5c5c5c;
 }
 
-main#content #toc h4 {
+html[data-theme="dark"] main#content #toc h4 {
     color: #d4d4d4;
 }
 
-main#content ul#posts small {
+html[data-theme="dark"] main#content ul#posts small {
     color: #a7a7a7;
 }
 
-main#content ul#posts li a {
+html[data-theme="dark"] main#content ul#posts li a {
     text-decoration: none;
     color: #d4d4d4;
 }
 
-/* main#content ul#posts li a:hover {
-    color: orange;
-} */
-
-main#content header#post-header div {
+html[data-theme="dark"] main#content header#post-header div {
     color: #a7a7a7;
 }
-{{- if not (eq .Site.Params.dark "on") -}}
+
+html[data-theme="dark"] .category-card {
+    background: #1e1e1e;
+    border-color: #333;
 }
-{{- end -}}
+
+html[data-theme="dark"] .category-card h4 {
+    color: #e0e0e0;
+}
+
+html[data-theme="dark"] #recipe-search {
+    background: #1e1e1e;
+    border-color: #333;
+    color: #e0e0e0;
+}

@@ -47,7 +47,6 @@ header#banner {
 }
 
 header#banner .lang-switch {
-    order: 1;
 }
 
 header#banner .lang-switch a {
@@ -67,6 +66,53 @@ header#banner .lang-switch a {
 header#banner .lang-switch a:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+header#banner .header-controls {
+    order: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header#banner .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+header#banner .theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+header#banner .theme-icon {
+    display: none;
+    line-height: 1;
+}
+
+/* Show auto icon by default and when data-theme is auto */
+html:not([data-theme="light"]):not([data-theme="dark"]) header#banner .theme-icon-auto,
+html[data-theme="auto"] header#banner .theme-icon-auto {
+    display: inline;
+}
+
+html[data-theme="light"] header#banner .theme-icon-light {
+    display: inline;
+}
+
+html[data-theme="dark"] header#banner .theme-icon-dark {
+    display: inline;
 }
 
 header#banner a {
