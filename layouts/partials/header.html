@@ -5,12 +5,12 @@
         <div class="lang-switch">
             {{- if .IsTranslated }}
             {{- range .Translations }}
-            <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .Language.LanguageName }}{{ end }}</a>
+            <a href="{{ .Permalink }}" title="{{ .Language.Label }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .Language.Label }}{{ end }}</a>
             {{- end }}
             {{- else }}
             {{- range .Site.Languages }}
             {{- if ne $.Site.Language.Lang .Lang }}
-            <a href="{{ .Lang | relLangURL }}" title="{{ .LanguageName }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .LanguageName }}{{ end }}</a>
+            <a href="{{ .Lang | relLangURL }}" title="{{ .Label }}">{{ if eq .Lang "de" }}🇩🇪{{ else if eq .Lang "en" }}🇬🇧{{ else }}{{ .Label }}{{ end }}</a>
             {{- end }}
             {{- end }}
             {{- end }}
